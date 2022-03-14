@@ -8,10 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<BookingContext>(opt =>
     opt.UseInMemoryDatabase("TodoList"));
-//builder.Services.AddSwaggerGen(c =>
-//{
-//    c.SwaggerDoc("v1", new() { Title = "TodoApi", Version = "v1" });
-//});
+builder.Services.AddSwaggerGen(c =>
+{
+   c.SwaggerDoc("v1", new() { Title = "BookingAPI", Version = "v1" });
+});
 
 var app = builder.Build();
 
@@ -19,8 +19,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    // app.UseSwagger();
-    // app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookingAPI v1"));
 }
 
 app.UseHttpsRedirection();
