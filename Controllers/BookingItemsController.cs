@@ -30,6 +30,8 @@ namespace BookingAPI.Controllers
 
 
         // GET: api/BookingItems/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
         public async Task<ActionResult<BookingItem>> GetBookingItem(long id)
         {
@@ -59,6 +61,10 @@ namespace BookingAPI.Controllers
 
         // PUT: api/BookingItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBookingItem(long id, BookingItem bookingItem)
         {
@@ -90,6 +96,7 @@ namespace BookingAPI.Controllers
 
         //POST: api/BookingItems
         //To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
         public async Task<ActionResult<BookingItem>> PostBookingItem(BookingItem bookingItem)
         {
@@ -128,6 +135,9 @@ namespace BookingAPI.Controllers
 
 
         // DELETE: api/BookingItems/5
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBookingItem(long id)
         {
